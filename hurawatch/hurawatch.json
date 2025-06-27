@@ -1,18 +1,18 @@
 {
   "sourceName": "HuraWatch",
-  "iconUrl": "https://raw.githubusercontent.com/0n0/sources/main/hurawatch/iconapp.png",
+  "iconUrl": "https://raw.githubusercontent.com/50n50/sources/main/hianime/iconapp.png",
   "author": {
-    "name": "50/50",
+    "name": "ohyeahbastard",
     "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3122kQwublLkZ6rf1fEpUP79BxZOFmH9BSA&s"
   },
   "version": "1.0.0",
   "language": "English (DUB/SUB)",
   "streamType": "HLS",
   "quality": "1080p",
-  "baseUrl": "https://hurawatch.cc/home",
-  "searchBaseUrl": "https://bshar1865-hurawatch.vercel.app/api/v2/hurawatch/search?q=%s",
-  "scriptUrl": "https://raw.githubusercontent.com/ohyeahbastard/sources/main/hurawatch/hurawatch.js",
-  "type": "Movies",
+  "baseUrl": "https://hurawatch.cc/",
+  "searchBaseUrl": "https://hurawatch.cc/search?q=%s",
+  "scriptUrl": "https://raw.githubusercontent.com/yourusername/sources/main/hurawatch/hurawatch.js",
+  "type": "anime",
   "asyncJS": true,
   "softsub": true
 }
