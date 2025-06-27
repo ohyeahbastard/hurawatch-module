@@ -9,10 +9,10 @@
   "language": "English (DUB/SUB)",
   "streamType": "HLS",
   "quality": "1080p",
-  "baseUrl": "https://hurawatch.cc/",
+  "baseUrl": "https://hurawatch.cc/home",
   "searchBaseUrl": "https://bshar1865-hurawatch.vercel.app/api/v2/hurawatch/search?q=%s",
-  "scriptUrl": "https://raw.githubusercontent.com/YOUR_USERNAME/sources/main/hurawatch/hurawatch.js",
-  "type": "anime",
+  "scriptUrl": "https://raw.githubusercontent.com/ohyeahbastard/sources/main/hurawatch/hurawatch.js",
+  "type": "Movies",
   "asyncJS": true,
   "softsub": true
 }
