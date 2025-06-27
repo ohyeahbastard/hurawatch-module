@@ -11,7 +11,7 @@
   "quality": "1080p",
   "baseUrl": "https://hurawatch.cc/",
   "searchBaseUrl": "https://hurawatch.cc/search?q=%s",
-  "scriptUrl": "https://raw.githubusercontent.com/ohyeahbastard/hurawatch/main/hurawatch/hurawatch.js",
+  "scriptUrl": "https://raw.githubusercontent.com/ohyeahbastard/hurawatch-module/refs/heads/main/hurawatch/hurawatch.js",
   "type": "everything",
   "asyncJS": true,
   "softsub": true
