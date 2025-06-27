@@ -1,0 +1,18 @@
+{
+  "sourceName": "HuraWatch",
+  "iconUrl": "https://raw.githubusercontent.com/50n50/sources/main/hurawatch/iconapp.png",
+  "author": {
+    "name": "50/50",
+    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3122kQwublLkZ6rf1fEpUP79BxZOFmH9BSA&s"
+  },
+  "version": "1.0.0",
+  "language": "English (DUB/SUB)",
+  "streamType": "HLS",
+  "quality": "1080p",
+  "baseUrl": "https://hurawatch.cc/",
+  "searchBaseUrl": "https://bshar1865-hurawatch.vercel.app/api/v2/hurawatch/search?q=%s",
+  "scriptUrl": "https://raw.githubusercontent.com/YOUR_USERNAME/sources/main/hurawatch/hurawatch.js",
+  "type": "anime",
+  "asyncJS": true,
+  "softsub": true
+}
