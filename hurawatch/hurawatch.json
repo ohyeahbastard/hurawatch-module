@@ -12,7 +12,7 @@
   "baseUrl": "https://hurawatch.cc/",
   "searchBaseUrl": "https://hurawatch.cc/search?q=%s",
   "scriptUrl": "https://raw.githubusercontent.com/ohyeahbastard/hurawatch-module/main/hurawatch/hurawatch.js",
-  "asyncJS": true,
+  "asyncJS": false,
   "streamAsyncJS": false,
   "softsub": true,
   "type": "movies"
