@@ -4,17 +4,26 @@ async function search(query) {
   const html = await res.text();
 
   const results = [];
-  const regex = /<a href="\/watch\/([^"]+)"[^>]*>(.*?)<\/a>/g;
-  let match;
 
-  while ((match = regex.exec(html)) !== null) {
-    results.push({
-      title: match[2],
-      url: `https://hurawatch.cc/watch/${match[1]}`,
-      poster: "",
-      description: ""
-    });
-  }
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, "text/html");
+
+  const cards = doc.querySelectorAll(".flw-item");
+
+  cards.forEach(card => {
+    const title = card.querySelector(".film-name")?.textContent?.trim();
+    const link = card.querySelector("a")?.href;
+    const poster = card.querySelector("img")?.getAttribute("data-src");
+
+    if (title && link) {
+      results.push({
+        title,
+        url: link.startsWith("http") ? link : `https://hurawatch.cc${link}`,
+        poster,
+        description: ""
+      });
+    }
+  });
 
   return results;
 }
@@ -22,20 +31,5 @@ async function search(query) {
 async function getSources(url) {
   const res = await fetch(url);
   const html = await res.text();
-  const videoMatch = html.match(/"(https:\/\/[^"]+\.m3u8)"/);
 
-  if (videoMatch) {
-    return [{
-      url: videoMatch[1],
-      quality: "1080p",
-      isHLS: true
-    }];
-  }
-
-  return [];
-}
-
-module.exports = {
-  search,
-  getSources
-};
+  const sources
