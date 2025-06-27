@@ -4,32 +4,37 @@ async function search(query) {
   const html = await res.text();
 
   const results = [];
+  
+  const cardRegex = /<div class="flw-item">([\s\S]*?)<\/div>\s*<\/div>/g;
+  let cardMatch;
 
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, "text/html");
+  while ((cardMatch = cardRegex.exec(html)) !== null) {
+    const cardHtml = cardMatch[1];
 
-  const cards = doc.querySelectorAll(".flw-item");
+    const linkMatch = cardHtml.match(/<a href="([^"]+)"/);
+    if (!linkMatch) continue;
+    const urlPath = linkMatch[1];
 
-  cards.forEach(card => {
-    const title = card.querySelector(".film-name")?.textContent?.trim();
-    const link = card.querySelector("a")?.href;
-    const poster = card.querySelector("img")?.getAttribute("data-src");
+    const titleMatch = cardHtml.match(/<a[^>]*class="film-name"[^>]*>([^<]+)<\/a>/) ||
+                       cardHtml.match(/<h3 class="film-name">([^<]+)<\/h3>/);
+    const title = titleMatch ? titleMatch[1].trim() : null;
+    if (!title) continue;
 
-    if (title && link) {
-      results.push({
-        title,
-        url: link.startsWith("http") ? link : `https://hurawatch.cc${link}`,
-        poster,
-        description: ""
-      });
-    }
-  });
+    const posterMatch = cardHtml.match(/<img[^>]+data-src="([^"]+)"/) ||
+                        cardHtml.match(/<img[^>]+src="([^"]+)"/);
+    const poster = posterMatch ? posterMatch[1] : "";
+
+    results.push({
+      title,
+      url: urlPath.startsWith("http") ? urlPath : `https://hurawatch.cc${urlPath}`,
+      poster,
+      description: ""
+    });
+  }
 
   return results;
 }
 
 async function getSources(url) {
   const res = await fetch(url);
-  const html = await res.text();
-
-  const sources
+  const html =
