@@ -1,10 +1,10 @@
 async function search(query) {
   const url = `https://hurawatch.cc/search?q=${encodeURIComponent(query)}`;
-  const res = await fetch(url);
-  const html = await res.text();
+  // You can add headers if needed; here we keep it simple
+  const response = await fetchv2(url);
+  const html = await response.text();
 
   const results = [];
-  
   const cardRegex = /<div class="flw-item">([\s\S]*?)<\/div>\s*<\/div>/g;
   let cardMatch;
 
@@ -36,5 +36,23 @@ async function search(query) {
 }
 
 async function getSources(url) {
-  const res = await fetch(url);
-  const html =
+  const response = await fetchv2(url);
+  const html = await response.text();
+
+  const sources = [];
+  const m3u8Match = html.match(/"(https:\/\/[^"]+\.m3u8[^"]*)"/);
+  if (m3u8Match) {
+    sources.push({
+      url: m3u8Match[1],
+      quality: "1080p",
+      isHLS: true
+    });
+  }
+
+  return sources;
+}
+
+module.exports = {
+  search,
+  getSources
+};
